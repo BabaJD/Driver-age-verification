@@ -1,37 +1,39 @@
+# create variables for the user to input
+user_name = input("Enter your name here: ")
+user_age = int(input("Enter your age here: "))
+user_hair_colour = input("What is the colour of your hair? ")
+user_eye_colour = input("What is the colour of your eye? ")
 
-class Course:
-    name = "Fundamentals of Computer Science"
-    contact_website = "www.hyperiondev.com"
-    office_address = "Cape Town"
+# Create an Adult class
+class Adult():
+    # Contructor method
+    def __init__(self, name, age, eye_colour, hair_colour):
+        self.name = name
+        self.age = age
+        self.eye_colour = eye_colour
+        self.hair_colour = hair_colour
 
-    def contact_details(self):
-        print("Please contact us by visiting", self.contact_website)
+    # method that prints if the person is over 18
+    def can_drive(self):
+        print(f"{self.name} is old enough to drive")
 
-#  Add another method in the Course class that prints the head office location: Cape Town
-    def head_office_location(self):
-        print(f"The head office location of HyperionDev is: {self.office_address}")
 
-# Create a subclass of the Course class named OOPCourse
-class OOPCourse(Course):
-    course_id = "#12345"
+# create a subclass of Adult called Child, that will print if the age of
+# the user is less than 18
+class Child(Adult):
+    def can_drive(self):
+        print(f"{self.name} is not old enough to drive")
 
-# Create a constructor that initialises the description and trainer attributes 
-# and assign their values
-    def __init__(self, description = "OOP Fundamentals", trainer = "Mr Anon A. Mouse"):
-        self.description = description
-        self.trainer = trainer
 
-# Create a method in the subclass named "trainer_details" that prints what the 
-#  course is about and the name of the trainer    
-    def trainer_details(self):
-        print(f"The name of this course is {self.description} and the name of the trainer is {self.trainer}")
+# contruct logic that will be used to choose which method to execute based on the age of the user
 
-# Create a method in the subclass named "show_course_id" that prints the ID number of the course
-    def show_course_id(self):
-        print(f"The course id is {self.course_id}")
+# use an if-else function to create an object that will utilize the appropriate method based on the age of the user
+if user_age < 18:      
+    person = Child(user_name, user_age, user_eye_colour, user_hair_colour)  
+else:      
+    person = Adult(user_name, user_age, user_eye_colour, user_hair_colour)
 
-#Create an object of the subclass called course_1 and call the methods created
-course_1 = OOPCourse()
-course_1.contact_details()
-course_1.trainer_details()
-course_1.show_course_id()
+
+person.can_drive()
+ 
+
